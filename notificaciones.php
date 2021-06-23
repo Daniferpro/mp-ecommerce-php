@@ -6,26 +6,22 @@ require __DIR__ .  '/vendor/autoload.php';
 MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
 
 
-// $datos = [
-//     'type' => $_REQUEST['type'],
-//     'topic' => $_REQUEST['topic'],
-//     'id' => $_REQUEST['id'],
-//     "id"=> $_REQUEST['id'],
-//     "live_mode": true,
-//     "type": "payment",
-//     "date_created": "2015-03-25T10:04:58.396-04:00",
-//     "application_id": 123123123,
-//     "user_id": 44444,
-//     "version": 1,
-//     "api_version": "v1",
-//     "action": "payment.created",
-//     "data": {
-//         "id": "999999999"
-//     }
-// ];
+$datos = [
+    'topic'     => $_REQUEST['topic'],
+    'id'        => $_REQUEST['id'],
+    "live_mode" => $_REQUEST['live_mode'],
+    "type"      => $_REQUEST['type'],
+    "date_created"  => $_REQUEST['date_created'],
+    "application_id"=> $_REQUEST['application_id'],
+    "user_id"       => $_REQUEST['user_id'],
+    "version"       => $_REQUEST['version'],
+    "api_version"   => $_REQUEST['api_version'],
+    "action"        => $_REQUEST['action'],
+    "data"          => $_REQUEST['data'],
+];
 
 if($_REQUEST['topic']=="payment" || $_REQUEST['topic'=="merchant_order"]){
-    file_put_contents('webhook.log', $_POST["payment"] . PHP_EOL,FILE_APPEND);
+    file_put_contents('webhook.log', json_encode($datos) . PHP_EOL,FILE_APPEND);
 }
 
 switch ($type) {
