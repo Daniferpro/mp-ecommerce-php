@@ -1,9 +1,10 @@
 <?php
 require __DIR__ .'/vendor/autoload.php';
-
+$urlbase = 'https://' . $_SERVER['HTTP_HOST'];
 MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
 MercadoPago\SDK::setPublicKey('APP_USR-7eb0138a-189f-4bec-87d1-c0504ead5626');
 MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
+$img = $urlbase . '/' . str_replace('./', '', $_POST['img']);;
 
         $preference = new MercadoPago\Preference();
         $preference->back_urls = array(
@@ -28,7 +29,7 @@ MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
         $item->title = $_POST['title'];
         $item->description = "Dispositivo móvil de Tienda e-commerce";
         $item->category_id = "phones"; 
-        $item->picture_url = __DIR__ . $_POST['img'];
+        $item->picture_url = $img;
         $item->quantity = 1;
         $item->currency_id = "ARS";
         $item->unit_price = intval($_POST['price']);
@@ -186,7 +187,8 @@ MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
                                         <div class="as-producttile-title">
                                             <h3 class="as-producttile-name">
                                                 <p class="as-producttile-tilelink">
-                                                    <span data-ase-truncate="2"><?php echo $_POST['title'] ?></span>
+                                                    <span data-ase-truncate="2"><?php echo // $_POST['title'] 
+                                                    $img; ?></span>
                                                 </p>
 
                                             </h3>

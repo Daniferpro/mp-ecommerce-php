@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="./assets/merch-tools.css" media="screen, print">
 
     <link rel="stylesheet" href="./assets/fonts" media="">
+
+    <script src="https://www.mercadopago.com/v2/security.js" view="home"></script>
     <style>
         .as-filter-button-text {
             font-size: 26px;
