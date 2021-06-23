@@ -5,7 +5,7 @@ require __DIR__ .  '/vendor/autoload.php';
 
 MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
 
-
+$dato = json_decode($_REQUEST['payment']);
 $datos = [
     'topic'     => $_REQUEST['topic'],
     'id'        => $_REQUEST['id'],
@@ -21,7 +21,7 @@ $datos = [
 ];
 
 if($_REQUEST['topic']=="payment" || $_REQUEST['topic'=="merchant_order"]){
-    file_put_contents('webhook.log', json_encode($datos) . PHP_EOL,FILE_APPEND);
+    file_put_contents('webhook.log', json_encode($dato) . PHP_EOL,FILE_APPEND);
 }
 
 switch ($type) {
