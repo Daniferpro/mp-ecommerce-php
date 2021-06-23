@@ -257,7 +257,7 @@
                                                 $15.000
                                             </div>
                                         </div>
-                                        <form action="./detail.php" method="get">
+                                        <form action="./detail.php" method="post">
                                             <input type="hidden" name="img" value="./assets/samsung-galaxy-s9-xxl.jpg">
                                             <input type="hidden" name="title" value="Samsung Galaxy S9">
                                             <input type="hidden" name="price" value="15000">
