@@ -13,7 +13,7 @@ $datos = [
 ];
 
 if($_REQUEST['topic']=="payment" || $_REQUEST['topic'=="merchant_order"]){
-    file_put_contents('webhook.log', json_encode($datos) . PHP_EOL,FILE_APPEND);
+    file_put_contents('webhook.log', json_encode($_POST) . PHP_EOL,FILE_APPEND);
 }
 
 switch ($type) {
