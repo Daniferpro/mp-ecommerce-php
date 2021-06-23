@@ -88,21 +88,19 @@
                         <div class="row as-search-navbar" id="as-search-navbar" style="width: auto;">
                             <div class="as-accessories-filter-tile column large-6 small-3">
                                 <h2>
-                                    Pago procesado exitosamente!
+                                    Pago En estado Pendiente!
                                 </h2>
                                 <p>
                                     Resumen de tu compra:
                                 </p>
                                 <p>
-                                    Pagaste: <strong> <?php echo "$" . $payment->transaction_amount ?> </strong><br/>
-                                    con: <strong> <?php echo $payment->payment_method_id ?> </strong><br/>
-                                    El pago id es : <strong> <?php echo $payment->payment_id ?> </strong><br/>
+                                   
                                     Referencia externa: <strong> <?php echo $_GET['external_reference'] ?></strong><br/>
                                     Operacion: <strong> <?php echo $_GET['collection_id'] ?></strong><br/>
-                                    Orden ID: <strong> <?php echo $payment->order->id ?></strong><br/>
+                                   
                                 </p>
                                 <h6>
-                                    Gracias por tu compra!
+                                    Te informaremos del estado de tu compra!
                                 </h6>
                             </div>
 
