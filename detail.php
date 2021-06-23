@@ -1,10 +1,6 @@
 <?php
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require __DIR__ .'/vendor/autoload.php';
+
 MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
 MercadoPago\SDK::setPublicKey('APP_USR-7eb0138a-189f-4bec-87d1-c0504ead5626');
 MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
@@ -34,8 +30,8 @@ MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
         $item->category_id = "phones"; 
         $item->picture_url = __DIR__ . $_POST['img'];
         $item->quantity = 1;
-        $item->currency_id = "UYU";
-        $item->unit_price = $_POST['price'] . 00;
+        $item->currency_id = "ARS";
+        $item->unit_price = intval($_POST['price']);
         $preference->items = array($item);
         
         $payer = new MercadoPago\Payer();
@@ -44,21 +40,22 @@ MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
         $payer->email = "test_user_63274575@testuser.com";
         $payer->phone = array(
           "area_code" => "11",
-          "number" => "22223333"
+          "number" => "22223333",
         );
 
         $payer->identification = array(
           "type" => "DNI",
-          "number" => "471923173"
+          "number" => "471923173",
         );
 
         $payer->address = array(
           "street_name" => "Falsa",
           "street_number" => 123,
-          "zip_code" => "1111"
+          "zip_code" => "1111",
         );
         
         $preference->payer = $payer;
+        $preference->init_point;
         $preference->notification_url = "https://daniferpro3-mp-commerce-php.herokuapp.com/notificaciones.php";
         $preference->save();
 
@@ -77,6 +74,10 @@ MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
+    <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+
+    
 
     <link rel="stylesheet" href="./assets/category-landing.css" media="screen, print">
 
@@ -122,6 +123,7 @@ MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
                                 </div>
                                 <div class="pd-billboard-info">
                                     <h1 class="pd-billboard-header pd-util-compact-small-18">Tienda e-commerce</h1>
+                                
                                 </div>
                             </div>
                         </div>
@@ -193,7 +195,7 @@ MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
                                             <?php echo "$ " . $_POST['price'] ?>
                                         </h3>
                                     </div>
-                                    <button type="submit" class="mercadopago-button" ><?php echo $preference->init_point; ?></button>
+                                    <button type="submit" class="mercadopago-button" ></button>
                                 </div>
                             </div>
                         </div>
@@ -211,24 +213,21 @@ MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
         </div>
 
 </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div id="ac-gn-viewport-emitter"> </div></body>
-<script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
-<script src="https://sdk.mercadopago.com/js/v2"></script>
-
 <script>
 
-  const mp = new MercadoPago('APP_USR-7eb0138a-189f-4bec-87d1-c0504ead5626', {
-        locale: 'es-UY'
-  });
+    const mp = new MercadoPago('APP_USR-7eb0138a-189f-4bec-87d1-c0504ead5626', {
+            locale: 'es-AR'
+    });
 
 
-  mp.checkout({
-      preference: {
-          id: '<?php echo $preference->id;?>'
-      },
-      render: {
-            container: '.mercadopago-button', // Indica dónde se mostrará el botón de pago
-            label: 'Pagar la Compra', // Cambia el texto del botón de pago (opcional)
-      }
-});
-</script>
+    mp.checkout({
+        preference: {
+            id: '<?php echo $preference->id;?>'
+        },
+        render: {
+                container: '.mercadopago-button', // Indica dónde se mostrará el botón de pago
+                label: 'Pagar la Compra', // Cambia el texto del botón de pago (opcional)
+        }
+    });
+    </script>
 </html>
