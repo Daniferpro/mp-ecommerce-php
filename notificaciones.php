@@ -24,6 +24,18 @@ if($_REQUEST['topic']=="payment" || $_REQUEST['topic'=="merchant_order"]){
     file_put_contents('webhook.log', json_encode($dato) . PHP_EOL,FILE_APPEND);
 }
 
+$payment = fopen("pagos.txt", "a");
+$json = file_get_contents('php://input');
+fwrite($payment, "================" . PHP_EOL);
+fwrite($payment, $json);
+fwrite($payment, "================ POST" . PHP_EOL);
+fwrite($payment, $_POST);
+fwrite($payment, "================ GET" . PHP_EOL);
+fwrite($payment, $_GET);
+fwrite($payment, "================ REQUEST" . PHP_EOL);
+fwrite($payment, $_REQUEST);
+fclose($payment);
+
 switch ($type) {
     case "payment":
         $payment = MercadoPago\Payment::find_by_id($id);
